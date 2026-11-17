@@ -17,7 +17,7 @@
 <div class="app">
   <header class="top">
     <button id="placeBtn" class="place" aria-label="Change location"><span class="pin" aria-hidden="true">◎</span><span id="placeName">Haarlem</span><span class="caret" aria-hidden="true">▾</span></button>
-    <div class="top-right"><span id="updated" class="muted small"></span><button id="refresh" class="icon-btn" aria-label="Refresh">⟳</button></div>
+    <div class="top-right"><span id="updated" class="muted small"></span><button id="langBtn" class="lang" type="button">NL</button><button id="refresh" class="icon-btn" aria-label="Refresh">⟳</button></div>
   </header>
 
   <main class="grid">
@@ -37,19 +37,20 @@
       <div class="chart-wrap"><canvas id="chart" aria-label="Forecast chart. Drag across it for a reading."></canvas></div>
     </section>
 
+    <section class="card radar" id="radarCard">
+      <div class="label" id="radarLabel">RADAR</div>
+      <div class="radar-frame"><img id="radarImg" alt="" hidden width="550" height="512"><div id="radarStatus" class="radar-status muted small"></div><div id="radarNote" class="radar-note" hidden></div></div>
+    </section>
+
     <section class="card outlook" id="outlookCard" hidden>
-      <div class="label">OUTLOOK <span class="muted">(Buienradar, in Dutch)</span></div>
+      <div class="label" id="outlookLabel">OUTLOOK</div>
       <p id="outlook"></p>
     </section>
 
     <section class="card days" id="daysCard" hidden></section>
   </main>
 
-  <footer class="foot muted small">
-    Weather data: <a href="https://www.buienradar.nl" target="_blank" rel="noopener">buienradar.nl</a><br>
-    Longer rain forecasts, temperature, wind, UV, sun and pollen: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0)<br>
-    Unofficial, personal-use app. Not affiliated with Buienradar.
-  </footer>
+  <footer id="footer" class="foot muted small"></footer>
 </div>
 
 <div id="layerMenu" class="menu" hidden role="listbox"></div>
