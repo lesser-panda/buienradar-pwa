@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rain – Buienradar forecast</title>
+<meta name="description" content="Rain forecast for the Netherlands and Belgium, with temperature, wind, UV, sun and pollen.">
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <button id="placeBtn" class="place" aria-label="Change location"><span class="pin" aria-hidden="true">◎</span><span id="placeName">Haarlem</span><span class="caret" aria-hidden="true">▾</span></button>
+    <div class="top-right"><span id="updated" class="muted small"></span><button id="refresh" class="icon-btn" aria-label="Refresh">⟳</button></div>
+  </header>
+
+  <main class="grid">
+    <section class="card now" id="nowCard" hidden>
+      <img id="nowIcon" alt="" width="64" height="64">
+      <div id="nowTemp" class="temp">–</div>
+      <div class="now-text"><div id="nowDesc" class="now-desc"></div><div id="nowSub" class="muted small"></div></div>
+    </section>
+
+    <section class="card rain" id="rainCard">
+      <div class="head-row">
+        <h1 id="rainHead">Loading…</h1>
+        <button id="layerBtn" class="pill" hidden aria-haspopup="listbox">Rain ▾</button>
+      </div>
+      <div id="rainSub" class="muted sub"></div>
+      <div id="chips" class="chips" role="tablist" hidden></div>
+      <div class="chart-wrap"><canvas id="chart" aria-label="Forecast chart. Drag across it for a reading."></canvas></div>
+    </section>
+
+    <section class="card outlook" id="outlookCard" hidden>
+      <div class="label">OUTLOOK <span class="muted">(Buienradar, in Dutch)</span></div>
+      <p id="outlook"></p>
+    </section>
+
+    <section class="card days" id="daysCard" hidden></section>
+  </main>
+
+  <footer class="foot muted small">
+    Weather data: <a href="https://www.buienradar.nl" target="_blank" rel="noopener">buienradar.nl</a><br>
+    Longer rain forecasts, temperature, wind, UV, sun and pollen: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0)<br>
+    Unofficial, personal-use app. Not affiliated with Buienradar.
+  </footer>
+</div>
+
+<div id="layerMenu" class="menu" hidden role="listbox"></div>
+
+<dialog id="search">
+  <form method="dialog" class="search-head">
+    <input id="q" type="search" placeholder="Search a town in NL or BE" autocomplete="off" enterkeyhint="search" aria-label="Search a town">
+    <button class="icon-btn" value="close" aria-label="Close">✕</button>
+  </form>
+  <button id="gps" class="gps" type="button">◎ Use my location</button>
+  <ul id="results" class="results"></ul>
+  <div id="searchMsg" class="muted small"></div>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
